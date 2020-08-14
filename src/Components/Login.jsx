@@ -99,7 +99,7 @@ class Login extends Component {
               className="mx-auto img-fluid"
               style={{ display: "block", width: "30vmin" }}
               // width="30%"
-              src="https://seeklogo.net/wp-content/uploads/2017/01/linkedin-logo-512x512.png"
+              src="https://www.netclipart.com/pp/m/200-2006277_linkedin-clipart-transparent-linkedin-logo-png-hd.png"
               alt="logo"
             />
           </Row>
