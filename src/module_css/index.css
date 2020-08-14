@@ -1,59 +1,56 @@
 .avatar-group {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .avatar {
-    width: 1.8rem;
-    height: 1.8rem;
-    position: relative;
-    display: inline-block;
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  display: inline-block;
 }
 
 .avatar .border {
-    border-width: 3px!important;
+  border-width: 3px !important;
 }
 
 .avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .rounded-circle {
-    border-radius: 50%!important;
+  border-radius: 50% !important;
 }
 .border-white {
-    border-color: #fff!important;
+  border-color: #fff !important;
 }
 .border {
-    border: 1px solid #dee2e6!important;
+  border: 1px solid #dee2e6 !important;
 }
 
-
-
 .avatar .avatar-title {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .avatar .border {
-    border-width: 3px!important;
+  border-width: 3px !important;
 }
 .avatar-title {
-    width: 100%;
-    height: 100%;
-    background-color: #6861ce;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #6861ce;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .avatar-group .avatar:hover {
-    z-index: 1;
+  z-index: 1;
 }
 
-.avatar-group .avatar+.avatar {
-    margin-left: -.75rem;
+.avatar-group .avatar + .avatar {
+  margin-left: -0.75rem;
 }
 /* .rounded-circle {
     border-radius: 50%!important;
@@ -65,3 +62,9 @@
     border: 1px solid #dee2e6!important;
 }
      */
+
+@media (max-width: 450px) {
+  .main-img {
+    max-width: 80% !important;
+  }
+}
