@@ -99,7 +99,7 @@ class Login extends Component {
               className="mx-auto img-fluid main-img"
               style={{ display: "block", maxWidth: "47%" }}
               // width="30%"
-              src="https://www.netclipart.com/pp/m/200-2006277_linkedin-clipart-transparent-linkedin-logo-png-hd.png"
+              src="https://www.pinclipart.com/picdir/middle/195-1950836_linkedin-linkedin-recruiter-logo-png-clipart.png"
               alt="logo"
             />
           </Row>
