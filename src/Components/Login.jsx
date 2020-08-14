@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import { Alert, Form, Input, Container, Row, Fade } from "reactstrap";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import {loginWithThunk} from "../action/index"
-import LoginAPI from "../APIs/LoginAPI"
+import { loginWithThunk } from "../action/index";
+import LoginAPI from "../APIs/LoginAPI";
 
+const mapStateToProps = (state) => state;
 
-
-const mapStateToProps = state => state;
-
-const mapDispatchToProps = dispatch => ({
-  setUserToken: (t, u) => dispatch(loginWithThunk(t, u))
+const mapDispatchToProps = (dispatch) => ({
+  setUserToken: (t, u) => dispatch(loginWithThunk(t, u)),
 });
 // const mapDispatchToProps = dispatch => ({
 //   setUserToken: base64 =>
@@ -19,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
 //       payload:{
 //         token: base64,
 //         user: base64.user.username
-//       } 
+//       }
 //     })
 // });
 
@@ -31,7 +29,7 @@ class Login extends Component {
     wrongPass: false,
     isLoading: true,
     signup: false,
-    saveCredentials: false
+    saveCredentials: false,
   };
 
   // componentDidMount=()=>{
@@ -50,33 +48,30 @@ class Login extends Component {
 
   // }
 
-  
-
-  getCredentials = async e => {
+  getCredentials = async (e) => {
     e.preventDefault();
     //create my "token" starting from username and password
     //contact the APIs to prove identity
     let obj = {
       email: this.state.email,
-      password: this.state.password
-    }
-    const respJson = await LoginAPI(obj)
+      password: this.state.password,
+    };
+    const respJson = await LoginAPI(obj);
     if (respJson) {
-     
       console.log(respJson);
       if (this.state.saveCredentials) {
-        this.props.setUserToken(respJson.access_token,respJson.user.username );
+        this.props.setUserToken(respJson.access_token, respJson.user.username);
         localStorage.setItem("access_token", respJson.access_token);
         localStorage.setItem("username", respJson.user.username);
-        localStorage.setItem("userId",respJson.user._id )
+        localStorage.setItem("userId", respJson.user._id);
       } else {
         sessionStorage.setItem("access_token", respJson.access_token);
         sessionStorage.setItem("username", respJson.user.username);
         sessionStorage.setItem("userId", respJson.user._id);
-        this.props.setUserToken(respJson.access_token,respJson.user.username);
+        this.props.setUserToken(respJson.access_token, respJson.user.username);
       }
       // <Redirect to={{pathname:"/login" }}/>
-       this.props.history.push("/newsfeed");
+      this.props.history.push("/newsfeed");
 
       this.props.removeIsLoading();
     } else {
@@ -84,26 +79,26 @@ class Login extends Component {
       this.setState({
         wrongPass: true,
         email: "",
-        password: ""
+        password: "",
       });
     }
   };
 
   render() {
-console.log(this.props.match.params.redirect || "newsfeed")
-    if ( this.props.details.userToken){
-      return <Redirect to= "/newsfeed" />
+    console.log(this.props.match.params.redirect || "newsfeed");
+    if (this.props.details.userToken) {
+      return <Redirect to="/newsfeed" />;
     }
-    
-      // return <Redirect to={{pathname:"/"+ (this.props.match.params.redirect || "newsfeed") }} />
+
+    // return <Redirect to={{pathname:"/"+ (this.props.match.params.redirect || "newsfeed") }} />
     return (
       <div className="login-form mx-auto mt-5">
         <Container>
           <Row>
             <img
-              className="mx-auto"
-              style={{ display: "block" }}
-              width="30%"
+              className="mx-auto img-fluid"
+              style={{ display: "block", width: "30vmin" }}
+              // width="30%"
               src="https://seeklogo.net/wp-content/uploads/2017/01/linkedin-logo-512x512.png"
               alt="logo"
             />
@@ -119,7 +114,7 @@ console.log(this.props.match.params.redirect || "newsfeed")
               type="email"
               placeholder="Email"
               value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
+              onChange={(e) => this.setState({ email: e.target.value })}
             />
 
             <Input
@@ -127,20 +122,21 @@ console.log(this.props.match.params.redirect || "newsfeed")
               type="password"
               placeholder="Password (6 or more characters)"
               value={this.state.password}
-              onChange={e => this.setState({ password: e.target.value })}
-              />
+              onChange={(e) => this.setState({ password: e.target.value })}
+            />
 
             <Container>
               <label className="pull-left checkbox-inline">
-                <input check="true"
+                <input
+                  check="true"
                   type="checkbox"
                   value={this.state.saveCredentials}
-                  onClick={e =>
+                  onClick={(e) =>
                     this.setState({
-                      saveCredentials: !this.state.saveCredentials
+                      saveCredentials: !this.state.saveCredentials,
                     })
                   }
-                  />{" "}
+                />{" "}
                 Keep me signed in
               </label>
             </Container>
@@ -154,10 +150,12 @@ console.log(this.props.match.params.redirect || "newsfeed")
           </p>
 
           <div className="text-center">
-            <a 
+            <a
               href="https://be-lnk.herokuapp.com/auth/facebook"
-              className="btn btn-primary text-white">
-             <span className="fa spanbutton"> &#xf09a;</span> &nbsp; <span className=" spanbutton">Login With Facebook</span>
+              className="btn btn-primary text-white"
+            >
+              <span className="fa spanbutton"> &#xf09a;</span> &nbsp;{" "}
+              <span className=" spanbutton">Login With Facebook</span>
             </a>
           </div>
         </Container>
